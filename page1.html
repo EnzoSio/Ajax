@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>page 1</title>
+        <script type="text/javascript">
+        function envoyerRequete(url) { 
+            var xhr = new XMLHttpRequest();
+            if ( xhr == null) {
+                alert("Impossible d'utiliser Ajax sur ce navigateur");
+            }
+            else {
+                xhr.open("GET", url, false); 
+                xhr.send(null); 
+                if (xhr.readyState == 4 ) { 
+                    if (xhr.status == 200 || xhr.status == 0) {
+                        // var affichageReponse = xhr.responseText;
+                        traiterReponse(xhr.responseText);
+                    }
+                    else {
+                        alert("La requête ne s'est pas correctement exécutée");
+                    }
+                }
+            }
+        }
+        function traiterReponse (reponse) {
+            // alert(reponse); // Format de récupération : simple texte
+            document.write(reponse);
+        }
+
+        </script>
+    </head>
+    <body>
+        <input type = "button" value = "RecupPage2" onClick = "envoyerRequete('page2.html');" />
+        <input type = "button" value = "VoirJour" onClick = "envoyerRequete('voirDate.php');" />
+        <input type = "button" value = "Ouvrir convertisseur" onClick = "envoyerRequete('convertisseurMonnaie.php');" />
+        <input type = "button" value = "Ouvrir convertisseur" onClick = "envoyerRequete('meteo.php');" />
+    </body>
+</html>
